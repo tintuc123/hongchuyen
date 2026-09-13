@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+# ============================================
+# CẤU HÌNH ADMIN (Sveltia CMS)
+# ============================================
+# 1. Thay "YOUR_GITHUB_USERNAME/YOUR_REPO_NAME" bằng repo thật của bạn
+# 2. Xem file README.md để biết cách thiết lập đăng nhập (OAuth)
+# ============================================
+
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME   # <-- SỬA DÒNG NÀY
+  branch: main
+  # Nếu dùng sveltia-cms-auth (Cloudflare Worker), bỏ comment 2 dòng dưới:
+  # base_url: https://your-worker-name.your-subdomain.workers.dev
+  # auth_endpoint: auth
+
+# Thư mục lưu ảnh thumbnail khi upload qua Admin
+media_folder: jpg
+public_folder: /jpg
+
+# ============================================
+# BỘ SƯU TẬP NỘI DUNG
+# ============================================
+collections:
+  - name: posts
+    label: "Danh sách Video"
+    label_singular: "Video"
+    files:
+      - name: posts
+        label: "Tất cả video"
+        file: data/posts.json
+        fields:
+          - label: "Danh sách video"
+            name: posts
+            widget: list
+            summary: "{{fields.title}}"
+            allow_add: true
+            allow_delete: true
+            allow_reorder: true
+            fields:
+              - label: "ID (duy nhất)"
+                name: id
+                widget: string
+                hint: "Ví dụ: 1, 2, video-abc... Không trùng với video khác"
+                pattern: ['^[a-zA-Z0-9_-]+$', "Chỉ dùng chữ, số, gạch ngang, gạch dưới"]
+
+              - label: "Tiêu đề"
+                name: title
+                widget: string
+                required: true
+
+              - label: "Link Video (URL đầy đủ)"
+                name: video
+                widget: string
+                required: true
+                hint: "Dán link video từ Cloudflare R2, Bunny, Google Drive, hoặc bất kỳ đâu (bắt đầu bằng https://). KHÔNG upload file mp4 lớn vào GitHub."
+
+              - label: "Ảnh thumbnail"
+                name: thumbnail
+                widget: image
+                required: true
+                choose_url: true
+                media_folder: "jpg"
+                public_folder: "/jpg"
+
+              - label: "Ngày đăng"
+                name: published
+                widget: datetime
+                required: false
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"

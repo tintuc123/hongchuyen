@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 16px 40px;
+}
+
+.ad-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+.ad-content {
+    width: 530px;
+    max-width: 90vw;
+}
+
+.ad-marquee {
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.ad-marquee-text {
+    color: #ececec;
+    font-size: 17px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.ad-box {
+    position: relative;
+    width: 100%;
+}
+
+.ad-box img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.ad-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: #333;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1000000;
+}
+
+.ad-close:hover {
+    background: #555;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    background: #ff5722;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.marquee-text {
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+}
+
+.marquee-text a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@keyframes marquee {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+}
+
+/* ===== Trang danh sách bài viết ===== */
+.page-title {
+    text-align: center;
+}
+
+.back-link {
+    margin: 10px 0;
+}
+
+.back-link a {
+    text-decoration: none;
+    color: #ff5722;
+    font-weight: bold;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.post-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-3px);
+}
+
+.post-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+}
+
+.post-card .post-card-title {
+    padding: 10px 12px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.player-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.player-wrap iframe,
+.player-wrap video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #000;
+}

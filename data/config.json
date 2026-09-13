@@ -1,0 +1,5 @@
+{
+  "_huong_dan": "Video để trên Cloudflare R2 / host khác (link .mp4). Danh sách bài để trên Google Sheet: cột id, title, video, thumbnail. Dán link sheet vào googleSheetId. Share: Anyone with the link can view. Chưa điền sheet thì site vẫn đọc data/posts.json.",
+  "googleSheetId": "",
+  "sheetCsvUrl": ""
+}
